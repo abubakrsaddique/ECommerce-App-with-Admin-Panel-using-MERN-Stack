@@ -2,9 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const authRouter = require("./routes/auth/auth-routes");
 
 mongoose
-  .connect("mongodb+srv://abubakar:123456@as@cluster0.jswr9.mongodb.net/")
+  .connect(
+    "mongodb+srv://abubakar:123456as@cluster0.jswr9.mongodb.net/ECommerceApp?authSource=admin"
+  )
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
@@ -28,5 +31,6 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
+app.use("/api/auth", authRouter);
 
 app.listen(PORT, () => console.log("server is running on port ${PORT}"));
