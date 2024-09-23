@@ -5,9 +5,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth/auth-routes");
 
 mongoose
-  .connect(
-    "mongodb+srv://abubakar:123456as@cluster0.jswr9.mongodb.net/ECommerceApp?authSource=admin"
-  )
+  .connect("mongodb+srv://abubakar:123456as@cluster0.as1uj.mongodb.net/")
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
@@ -16,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173/",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
