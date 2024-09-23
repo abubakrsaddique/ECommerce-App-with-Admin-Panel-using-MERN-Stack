@@ -104,7 +104,7 @@ function CommonForm({
   }
 
   return (
-    <form onSubmit={onsubmit}>
+    <form onSubmit={onSubmit}>
       <div className="fex flex-col gap-3">
         {formControls.map((controlItem) => (
           <div className="grid w-full gap-1.5 mt-3" key={controlItem.name}>

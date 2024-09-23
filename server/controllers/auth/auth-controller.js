@@ -8,7 +8,7 @@ const registerUser = async (req, res) => {
 
   try {
     const hashPassword = await bcrypt.hash(password, 12);
-    const newUser = newUser({
+    const newUser = new User({
       userName,
       email,
       password: hashPassword,
