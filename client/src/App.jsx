@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 import AuthLayout from "../src/components/auth/layout";
 import AuthLogin from "../src/pages/auth/login";
@@ -18,8 +20,7 @@ import CheckAuth from "./components/common/check-auth";
 import UnauthPage from "./pages/unauth-page";
 
 function App() {
-  const isAuthenticated = false;
-  const user = null;
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
