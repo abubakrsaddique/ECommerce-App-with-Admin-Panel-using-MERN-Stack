@@ -21,12 +21,17 @@ import UnauthPage from "./pages/unauth-page";
 import { checkAuth } from "./store/auth-slice";
 
 function App() {
-  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const { user, isAuthenticated, isLoading } = useSelector(
+    (state) => state.auth
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkAuth());
   }, [dispatch]);
+
+  if (isLoading)
+    return <div className="w-[800] bg-black h-[600px]">Loading...</div>;
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
