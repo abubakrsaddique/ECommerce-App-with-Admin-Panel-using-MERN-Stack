@@ -10,13 +10,19 @@ import { ArrowUpDownIcon } from "lucide-react";
 import ProductFilter from "@/components/shopping-view/filter";
 import { sortOptions } from "@/config";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllFilteredProducts } from "@/store/shop/products-slice";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
 
 function ShoppingListing() {
   const dispatch = useDispatch();
   const { productList } = useSelector((state) => state.shopProducts);
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState(null);
+
+  function handleSort(value) {
+    setSort(value);
+  }
 
   useEffect(() => {
     dispatch(fetchAllFilteredProducts);
@@ -45,7 +51,7 @@ function ShoppingListing() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-[200px]">
-                <DropdownMenuRadioGroup>
+                <DropdownMenuRadioGroup value={sort} onValueChange={handleSort}>
                   {sortOptions.map((sortItem) => (
                     <DropdownMenuRadioItem
                       value={sortItem.id}
