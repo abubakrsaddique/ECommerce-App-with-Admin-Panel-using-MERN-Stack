@@ -15,8 +15,6 @@ const shopReviewRouter = require("./routes/shop/review-routes");
 
 const commonFeatureRouter = require("./routes/common/feature-routes");
 
-// const path = require("path");
-
 mongoose
   .connect("mongodb+srv://abubakar:123456as@cluster0.as1uj.mongodb.net/")
   .then(() => console.log("MongoDB connected"))
@@ -24,8 +22,6 @@ mongoose
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-// const _dirname = path.resolve();
 
 app.use(
   cors({
@@ -56,10 +52,5 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
-
-// app.use(express.static(path.join(_dirname, "/client/dist")));
-// app.get("*", (_, res) => {
-//   res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
-// });
 
 app.listen(PORT, () => console.log("server is running on port ${PORT}"));
