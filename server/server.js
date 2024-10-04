@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+require("dotenv").config();
 const authRouter = require("./routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
 const adminOrderRouter = require("./routes/admin/order-routes");
@@ -15,10 +16,15 @@ const shopReviewRouter = require("./routes/shop/review-routes");
 
 const commonFeatureRouter = require("./routes/common/feature-routes");
 
+//create a database connection -> u can also
+//create a separate file for this and then import/use that file here
+
+const mongoUrl = process.env.MONGODB_URL;
+
 mongoose
-  .connect("mongodb+srv://abubakar:123456as@cluster0.as1uj.mongodb.net/")
-  .then(() => console.log("MongoDB connected"))
-  .catch((error) => console.log(error));
+  .connect(mongoUrl)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Failed to connect to MongoDB:", err));
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -31,7 +37,7 @@ app.use(
       "Content-Type",
       "Authorization",
       "Cache-Control",
-      "Expire",
+      "Expires",
       "Pragma",
     ],
     credentials: true,
@@ -53,4 +59,4 @@ app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
 
-app.listen(PORT, () => console.log("server is running on port ${PORT}"));
+app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
