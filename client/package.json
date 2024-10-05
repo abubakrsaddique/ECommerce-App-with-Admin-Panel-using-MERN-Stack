@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "npx vite build",
     "lint": "eslint .",
-    "preview": "npx vite preview"
+    "preview": "npx vite preview",
+    "postinstall": "npm install vite"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
