@@ -23,7 +23,7 @@ mongoose
   .catch((err) => console.error("Failed to connect to MongoDB:", err));
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.use(
   cors({
@@ -39,8 +39,6 @@ app.use(
     credentials: true,
   })
 );
-
-console.log(process.env.FRONTEND_URL, "new");
 
 app.use(cookieParser());
 app.use(express.json());
