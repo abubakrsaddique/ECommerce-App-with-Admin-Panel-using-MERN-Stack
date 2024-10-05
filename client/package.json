@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npx vite build",
+    "build": "vite build",
     "lint": "eslint .",
-    "preview": "npx vite preview",
-    "postinstall": "npm install vite"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
