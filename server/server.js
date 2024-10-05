@@ -18,7 +18,7 @@ const shopReviewRouter = require("./routes/shop/review-routes");
 const commonFeatureRouter = require("./routes/common/feature-routes");
 
 mongoose
-  .connect("mongodb+srv://abubakar:123456as@cluster0.as1uj.mongodb.net/")
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Failed to connect to MongoDB:", err));
 
@@ -27,7 +27,7 @@ const PORT = process.env.PORT;
 
 app.use(
   cors({
-    // origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
