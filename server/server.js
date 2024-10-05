@@ -27,7 +27,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -39,6 +39,8 @@ app.use(
     credentials: true,
   })
 );
+
+console.log(process.env.FRONTEND_URL, "new");
 
 app.use(cookieParser());
 app.use(express.json());
